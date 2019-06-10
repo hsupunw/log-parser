@@ -1,0 +1,38 @@
+plugins {
+    id 'org.springframework.boot' version '1.5.1.RELEASE'
+    id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.ef'
+version = ''
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+springBoot {
+    mainClass = "com.ef.parser.Application"
+}
+
+configurations {
+    compile.exclude module: 'spring-boot-starter-tomcat'
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web:1.5.1.RELEASE')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa:1.5.21.RELEASE')
+    compile('org.apache.commons:commons-csv:1.7')
+
+    compileOnly('org.projectlombok:lombok:1.18.8')
+
+    runtime('mysql:mysql-connector-java:8.0.16')
+
+    testCompile('org.springframework.boot:spring-boot-starter-test:2.1.5.RELEASE')
+    testCompile('org.junit.jupiter:junit-jupiter-engine:5.2.0')
+    testCompile('org.mockito:mockito-junit-jupiter:2.23.0')
+
+    annotationProcessor('org.projectlombok:lombok:1.18.8')
+}
